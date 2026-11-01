@@ -64,6 +64,7 @@ async function bootstrap() {
     compression(),
   );
 
+  app.set('trust proxy', 1);
   app.set('view engine', 'hbs');
   app.set('views', join(ROOT_DIR, 'views'));
   app.use(express.static(join(ROOT_DIR, 'public')));
