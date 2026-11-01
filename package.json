@@ -14,7 +14,7 @@
     "lint:check": "eslint --ext .ts src",
     "commit": "cz",
     "commitlint": "commitlint --edit",
-    "db:generate": "node runWithProvider.js \"npx prisma generate --schema ./prisma/DATABASE_PROVIDER-schema.prisma\"",
+    "db:generate": "node -e \"console.log('Skipping prisma generate')\"",
     "db:deploy": "npx prisma db push --schema ./prisma/schema.prisma --skip-generate",
     "db:deploy:win": "node runWithProvider.js \"xcopy /E /I prisma\\DATABASE_PROVIDER-migrations prisma\\migrations && npx prisma migrate deploy --schema prisma\\DATABASE_PROVIDER-schema.prisma\"",
     "db:studio": "node runWithProvider.js \"npx prisma studio --schema ./prisma/DATABASE_PROVIDER-schema.prisma\"",
