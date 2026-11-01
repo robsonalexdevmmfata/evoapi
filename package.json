@@ -5,7 +5,7 @@
   "main": "./dist/main.js",
   "type": "commonjs",
   "scripts": {
-    "build": "tsc --noEmit && tsup",
+    "build": "npx prisma generate --schema ./prisma/schema.prisma && tsc --noEmit && tsup",
     "start": "tsx ./src/main.ts",
     "start:prod": "node dist/main",
     "dev:server": "tsx watch ./src/main.ts",
@@ -14,7 +14,7 @@
     "lint:check": "eslint --ext .ts src",
     "commit": "cz",
     "commitlint": "commitlint --edit",
-    "db:generate": "node -e \"console.log('Skipping prisma generate')\"",
+    "db:generate": "node runWithProvider.js \"npx prisma generate --schema ./prisma/DATABASE_PROVIDER-schema.prisma\"",
     "db:deploy": "npx prisma db push --schema ./prisma/schema.prisma --skip-generate",
     "db:deploy:win": "node runWithProvider.js \"xcopy /E /I prisma\\DATABASE_PROVIDER-migrations prisma\\migrations && npx prisma migrate deploy --schema prisma\\DATABASE_PROVIDER-schema.prisma\"",
     "db:studio": "node runWithProvider.js \"npx prisma studio --schema ./prisma/DATABASE_PROVIDER-schema.prisma\"",
