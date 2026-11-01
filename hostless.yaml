@@ -1,0 +1,11 @@
+build:
+  system: docker
+
+dockerfile_path: ./Dockerfile
+
+start_command: npm run start:prod
+
+health_check:
+  type: http
+  http_path: /
+  interval_in_seconds: 15
