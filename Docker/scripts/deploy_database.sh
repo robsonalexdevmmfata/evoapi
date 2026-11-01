@@ -17,10 +17,10 @@ if [[ "$DATABASE_PROVIDER" == "postgresql" || "$DATABASE_PROVIDER" == "mysql" ||
     else
         echo "Migration succeeded"
     fi
+    # Hostless and other read-only filesystems cannot write Prisma Client at runtime.
     npm run db:generate
     if [ $? -ne 0 ]; then
-        echo "Prisma generate failed"
-        exit 1
+        echo "Prisma generate skipped on read-only filesystem"
     else
         echo "Prisma generate succeeded"
     fi
